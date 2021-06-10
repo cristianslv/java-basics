@@ -2,9 +2,12 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String args[]) {
-        int x = 10;
+        Retangulo r = new Retangulo(1,1,10,20);
 
-        String nome = "Cristian";
+        int area = r.calcularArea();
+
+        System.out.println("A área é " + area);
+        /* String nome = "Cristian";
         nome = nome.toUpperCase();
 
         System.out.println("Hello World " + nome);
@@ -13,6 +16,6 @@ public class Main {
 
         nome = scan.next();
 
-        System.out.println("Hello World " + nome);
+        System.out.println("Hello World " + nome);*/
     }
 }
