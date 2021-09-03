@@ -1,27 +1,31 @@
 package views;
 
+import controllers.WindowController;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.imageio.ImageIO;
-import java.awt.image.*;
 import java.io.*;
 import java.util.Objects;
 
-public class Search {
+public class SearchView {
+    Icon gif;
     JFrame frame;
-    JLabel fieldLabel;
     JTextField searchField;
-    JPanel buttonsPanel, fieldPanel;
+    JLabel fieldLabel, gifLabel;
+    WindowController controller;
     JButton buttonClean, buttonSearch;
+    JPanel buttonsPanel, fieldPanel, gifPanel;
 
-    public Search() throws IOException {
+    public SearchView(WindowController controller) throws IOException {
+        this.controller = controller;
+
         startComponents();
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(500, 350);
-        frame.setLocation(700,400);
+        frame.setSize(500, 320);
+        frame.setLocation(700,70);
         frame.setVisible(true);
 
         setListeners();
@@ -46,10 +50,10 @@ public class Search {
         fieldPanel.add(fieldLabel);
         fieldPanel.add(searchField);
 
-        JPanel gifPanel = new JPanel();
-        Icon gif = new ImageIcon(Objects.requireNonNull(this.getClass().getResource("/public/search.gif")));
-        JLabel gifLabel = new JLabel(gif);
+        gif = new ImageIcon(Objects.requireNonNull(this.getClass().getResource("/public/search.gif")));
+        gifLabel = new JLabel(gif);
 
+        gifPanel = new JPanel();
         gifPanel.add(gifLabel);
 
         buttonsPanel.add(buttonClean);
@@ -64,6 +68,19 @@ public class Search {
         buttonClean.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                searchField.setText("");
+            }
+        });
+
+        buttonSearch.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    controller.searchMovie(searchField.getText());
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+
                 searchField.setText("");
             }
         });
