@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://logodownload.org/wp-content/uploads/2016/10/php-logo.png" height="250" width="250">
+  <img src="https://marcas-logos.net/wp-content/uploads/2020/11/Java-logo.png" height="250" width="450">
 </p>
 
 # Java Basics
